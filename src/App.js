@@ -49,7 +49,7 @@ const label = { inputProps: { 'aria-label': 'Switch demo' } };
 function CustomSwitch() {
   return (
     <div>
-      <Switch {...label} defaultChecked />
+      <Switch {...label} />
     </div>
   );
 }
