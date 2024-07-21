@@ -8,13 +8,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-
+import Switch from '@mui/material/Switch';
 function Nav() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <AppBar position="static">
+    
       <Toolbar>
         {/* Menu Icon for mobile */}
         {isMobile && (
@@ -24,34 +24,43 @@ function Nav() {
         )}
 
         {/* Logo or Title */}
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Bavanuja
+        <Typography variant="h4" component="div" className="logo" flexGrow={1} sx={{fontFamily:"pacifico",color:"purple",fontWeight:"200"}}>
+        <span>&lt;</span>
+        Bavanuja
+        <span>/&gt;</span>
         </Typography>
 
         {/* Navigation Links */}
         {!isMobile && (
           <>
-            <Button color="inherit">Skills</Button>
-            <Button color="inherit">Work Experiences</Button>
-            <Button color="inherit">Projects</Button>
-            <Button color="inherit">Contact Me</Button>
+            <Button color="inherit" sx={{padding:3}} >Skills</Button>
+            <Button color="inherit" sx={{padding:3}}>Work Experiences</Button>
+            <Button color="inherit" sx={{padding:3}}>Projects</Button>
+            <Button color="inherit" sx={{padding:3}}>Contact Me</Button>
           </>
         )}
-      </Toolbar>
-    </AppBar>
+        <CustomSwitch />
+        </Toolbar>
+    
   );
 }
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
-
-
+function CustomSwitch() {
+  return (
+    <div>
+      <Switch {...label} defaultChecked />
+    </div>
+  );
+}
 
 function App() {
   return (
     <div>
       <Nav />
+      
       <h1>Hello</h1>
     </div>
   );
 }
-
 export default App;
