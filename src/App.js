@@ -17,7 +17,8 @@ import Link from '@mui/material/Link';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
-
+import UGClogo from './UGC.png/public';
+import YITlogo from './YIT.png/public';
 
 function Nav({ darkMode, handleThemeChange }) {
   const theme = useTheme();
@@ -84,8 +85,14 @@ function AboutSection() {
         <Typography variant="h3" sx={{mb:2,fontFamily:  "Pacifico" ,}}>
         Aspiring Frontend Developer
         </Typography>
+        <Typography sx={{mb:2,gap:2}}>
+        I'm a passionate front-end developer with a solid foundation in computer science and technology.<br /> I have a strong background in HTML, CSS, and JavaScript, and I'm continually expanding my skills <br />
+        in full-stack development. Currently, I'm focusing on building responsive and user-friendly websites<br /> using modern frameworks like React and Material-UI. My goal is to create visually appealing and<br /> functional web applications that provide an excellent user experience.
+        </Typography>
         <SocialMediaLinks />
-        <Button variant="contained"   sx={{color:"white",fontWeight:"700"}}>Get Resume</Button>
+        <Button variant="contained"   sx={{color:"white",fontWeight:"700"}}>Contact Me</Button>
+        
+        <Button variant="contained"   sx={{color:"white",fontWeight:"700",}}>Get Resume</Button>
         </Container>
     </Box>
   );
@@ -94,18 +101,46 @@ function AboutSection() {
 function SocialMediaLinks() {
   return (
     <div style={{ display: 'flex', justifyContent: 'left', gap: '10px',mb:4}}>
-      <IconButton component="a" href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">
-        <GitHubIcon fontSize="large" sx={{ color: '#181717' }}/>
+      <IconButton component="a" href="https://github.com/Bavanuja" target="_blank" rel="noopener noreferrer">
+        <GitHubIcon fontSize="large" sx={{ color: 'black' }}/>
       </IconButton>
-      <IconButton component="a" href="https://www.linkedin.com/in/your-username/" target="_blank" rel="noopener noreferrer">
-        <LinkedInIcon fontSize="large" sx={{ color: '#0A66C2' }}/>
+      <IconButton component="a" href="https://www.linkedin.com/in/bavanuja-kamalakkannan27" target="_blank" rel="noopener noreferrer">
+        <LinkedInIcon fontSize="large" sx={{ color: 'black' }}/>
       </IconButton>
       <IconButton component="a" href="https://www.facebook.com/your-username" target="_blank" rel="noopener noreferrer">
-        <FacebookIcon fontSize="large" sx={{ color: '#1877F2' }} />
+        <FacebookIcon fontSize="large" sx={{ color: 'black' }} />
       </IconButton>
     </div>
   );
 }
+
+function Education(){
+  return(
+<Container>    
+<Typography variant="h2" sx={{ml:11}}>
+Education
+</Typography>
+<box>
+
+</box>
+component="img"
+        sx={{
+          height: 100,
+          width: 100,
+          borderRadius: '50%', // Optional: Use if you want the logo to be circular
+          objectFit: 'cover', // Ensures the image covers the box
+        }}
+        alt="UGClogo"
+        src=url{UGC.png}
+<box>
+<Typography variant="h3">
+Uduvil Girls' College
+</Typography>
+</box>
+</Container>
+  )
+}
+
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -120,8 +155,11 @@ function App() {
       <div>
         <Nav darkMode={darkMode} handleThemeChange={handleThemeChange} />
         <AboutSection />
+        <Education />
       </div>
+      
     </ThemeProvider>
+   
   );
 }
 
