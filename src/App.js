@@ -22,68 +22,63 @@
         import { Email as EmailIcon, Phone as PhoneIcon, LocationOn as LocationOnIcon } from '@mui/icons-material';
         import { motion } from 'framer-motion';
         
-    
+        
         
 
         function Nav({ darkMode, handleThemeChange }) {
-          const theme = useTheme();
-          const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-          const handleReload = (e) => {
-            e.preventDefault(); 
-            window.location.reload(); 
-          };
-          
-          
-          
+            const theme = useTheme();
+            const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+            const handleReload = (e) => {
+              e.preventDefault(); 
+              window.location.reload(); 
+            };
+            
               return (
-                <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            
-            
-            <Toolbar>
-              {isMobile && (
-                <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} >
-                  <MenuIcon />
-                </IconButton>
-              )}
+              <motion.div
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              >
               
+              
+              <Toolbar>
+                {isMobile && (
+                  <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                    <MenuIcon />
+                  </IconButton>
+                )}
+                
               <Link href="/" onClick={handleReload} underline="none" flexGrow={1} >
               <Typography variant="h5" component="div" className="logo" sx={{ fontFamily: "Roboto", color: "#3B5281", fontWeight: "300" }}>
-              
-                <span>&lt;</span>
-                Bavanuja
-                <span>/&gt;</span>
                 
-                </Typography>
-                </Link>
+                  <span>&lt;</span>
+                  Bavanuja
+                  <span>/&gt;</span>
+                  
+              </Typography>
+              </Link>
               {!isMobile && (
-                
-                <>
-                  <Button color="inherit" href="#education" sx={{ padding: 3,fontFamily: "Roboto" }} >Skills</Button>
-                  <Button color="inherit" href="#experiences" sx={{ padding: 3,fontFamily: "Roboto" }}> Experiences</Button>
-                  <Button color="inherit" href="#services" sx={{ padding: 3,fontFamily: "Roboto" }}>Services</Button>
-                  <Button color="inherit" href="#contactme" sx={{ padding: 3 ,fontFamily: "Roboto"}}>Contact</Button>
-                </>
+                  <>
+                    <Button color="inherit" href="#education" sx={{ padding: 3,fontFamily: "Roboto" }} >Skills</Button>
+                    <Button color="inherit" href="#experiences" sx={{ padding: 3,fontFamily: "Roboto" }}> Experiences</Button>
+                    <Button color="inherit" href="#services" sx={{ padding: 3,fontFamily: "Roboto" }}>Services</Button>
+                    <Button color="inherit" href="#contactme" sx={{ padding: 3 ,fontFamily: "Roboto"}}>Contact</Button>
+                  </>
               )}
               <CustomSwitch darkMode={darkMode} handleThemeChange={handleThemeChange} />
-            </Toolbar>
-          
-          
-            </motion.div>
+              </Toolbar>
               
-              
-          );
-        }
+             
+             </motion.div>
+             );
+           }
 
         const CustomSwitch = ({ darkMode, handleThemeChange }) => {
           return (
             <Switch checked={darkMode} onChange={handleThemeChange} />
           );
         };
-
+      
         function AboutSection() {
           return (
             <motion.div
@@ -602,7 +597,7 @@ const ContactSection = () => {
                 >
                 Get In Touch
                 </Typography>
-         <Grid container spacing={4} alignItems="center" sx={{ height: '100vh' }}>
+         <Grid container spacing={7} alignItems="center" sx={{ height: '100vh' }}>
           
           
           <Grid item xs={12} md={6}>
@@ -613,7 +608,7 @@ const ContactSection = () => {
               sx={{
                 width: '100%',  
                 height: 'auto', 
-                display: 'flex',
+                display: 'grid',
                 borderRadius: '10px', 
                 objectFit: 'cover', 
                 boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', 
@@ -634,8 +629,9 @@ const ContactSection = () => {
           display: 'flex',
           flexDirection: 'column',
           gap: 2,
-          height: '100%',
-          display: 'flex'
+          height: 'auto',
+          width: '100%', 
+          
         }}
       >
         <Typography variant="h6" sx={{ fontWeight: 'medium', mb: 2, fontFamily: "Roboto" }}>
