@@ -543,30 +543,60 @@
           )
           }
 
-          function ContactSection() {
-          return (
-              <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }} >
-            
-              <Container id="contact" maxWidth="lg" sx={{ my: 8,textAlign: 'center' }} >
-                <Typography 
-                variant="h3" 
-                sx={{ 
-                  mb: 6, 
-                  color: '#3B5281',
-                  fontFamily: "Roboto",
-                  borderBottom: '2px solid',
-                  display: 'inline-block',
-                  pb: 1 ,
-                  transition: 'transform 0.3s ease','&:hover': {transform: 'scale(1.05)',}
-                }}
-              >
+const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+      alert('Message sent successfully!');
+      // Optionally reset the form
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      alert('There was a problem sending your message.');
+    }
+  };
+
+  return (
+    <Container id="services" maxWidth="md" sx={{ textAlign: 'center', mt: 8, mb: 8 }}>
+            <Typography 
+                  variant="h3" 
+                  sx={{ 
+                    mb: 6, 
+                    fontFamily: "Roboto", 
+                    color: '#3B5281',
+                    borderBottom: '2px solid',
+                    display: 'inline-block',
+                    pb: 1,
+                    transition: 'transform 0.3s ease',
+                    '&:hover': { transform: 'scale(1.05)' }
+                  }}
+                >
                 Get In Touch
                 </Typography>
-        
-        <Grid container spacing={4} alignItems="center">
+         <Grid container spacing={4} alignItems="center">
           
           
           <Grid item xs={12} md={6}>
@@ -583,78 +613,82 @@
               }}
             />
           </Grid>
+    <Grid item xs={12} md={6}>
+      <Box
+        component="form"
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit}
+        sx={{
+          p: 3,
+          borderRadius: 2,
+          boxShadow: 4,
+          backgroundColor: '#ffffff',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          height: '100%'
+        }}
+      >
+        <Typography variant="h6" sx={{ fontWeight: 'medium', mb: 2, fontFamily: "Roboto" }}>
+          Send a Message
+        </Typography>
 
-          
-          <Grid item xs={12} md={6}>
-  <Box
-    component="form"
-    noValidate
-    autoComplete="off"
-    action="https://formspree.io/f/xrbzwdqb" // Replace with your Form ID
-    method="POST"
-    sx={{
-      p: 3,
-      borderRadius: 2,
-      boxShadow: 4,
-      backgroundColor: '#ffffff',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: 2,
-      height: '100%',  
-    }}
-  >
-    <Typography variant="h6" sx={{ fontWeight: 'medium', mb: 2, fontFamily: "Roboto" }}>
-      Send a Message
-    </Typography>
+        <TextField
+          label="Your Name"
+          variant="outlined"
+          fullWidth
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
 
-    <TextField
-      label="Your Name"
-      variant="outlined"
-      fullWidth
-      name="name" // Add name attribute
-      required // Optional: to ensure this field is filled
-    />
+        <TextField
+          label="Your Email"
+          variant="outlined"
+          fullWidth
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
 
-    <TextField
-      label="Your Email"
-      variant="outlined"
-      fullWidth
-      name="email" // Add name attribute
-      required // Optional: to ensure this field is filled
-    />
+        <TextField
+          label="Message"
+          variant="outlined"
+          fullWidth
+          multiline
+          rows={4}
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        />
 
-    <TextField
-      label="Message"
-      variant="outlined"
-      fullWidth
-      multiline
-      rows={4}
-      name="message" // Add name attribute
-      required // Optional: to ensure this field is filled
-    />
-
-    <Button
-      type="submit" // Ensure this button submits the form
-      variant="outlined"
-      size="large"
-      fullWidth
-      sx={{
-        mt: 2,
-        fontFamily: "Roboto",
-        transition: 'transform 0.3s ease',
-        '&:hover': { transform: 'scale(1.05)' },
-      }}
-    >
-      Send Message
-    </Button>
-  </Box>
-</Grid>
-
+        <Button
+          type="submit"
+          variant="outlined"
+          size="large"
+          fullWidth
+          sx={{
+            mt: 2,
+            fontFamily: "Roboto",
+            transition: 'transform 0.3s ease',
+            '&:hover': { transform: 'scale(1.05)' },
+          }}
+        >
+          Send Message
+        </Button>
+      </Box>
     </Grid>
-  </Container>
-  </motion.div>
-);
-}
+    </Grid>
+    </Container>
+  );
+};
+
+
+
 
 function Contact() {
 return (
