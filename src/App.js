@@ -544,6 +544,7 @@
           }
 
 const ContactSection = () => {
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -580,6 +581,11 @@ const ContactSection = () => {
   };
 
   return (
+    <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
     <Container id="services" maxWidth="md" sx={{ textAlign: 'center', mt: 8, mb: 8 }}>
             <Typography 
                   variant="h3" 
@@ -596,7 +602,7 @@ const ContactSection = () => {
                 >
                 Get In Touch
                 </Typography>
-         <Grid container spacing={4} alignItems="center">
+         <Grid container spacing={4} alignItems="center" sx={{ height: '100vh' }}>
           
           
           <Grid item xs={12} md={6}>
@@ -607,14 +613,15 @@ const ContactSection = () => {
               sx={{
                 width: '100%',  
                 height: 'auto', 
+                display: 'flex',
                 borderRadius: '10px', 
                 objectFit: 'cover', 
                 boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)', 
               }}
             />
           </Grid>
-    <Grid item xs={12} md={6}>
-      <Box
+         <Grid item xs={12} md={6}>
+         <Box
         component="form"
         noValidate
         autoComplete="off"
@@ -627,7 +634,8 @@ const ContactSection = () => {
           display: 'flex',
           flexDirection: 'column',
           gap: 2,
-          height: '100%'
+          height: '100%',
+          display: 'flex'
         }}
       >
         <Typography variant="h6" sx={{ fontWeight: 'medium', mb: 2, fontFamily: "Roboto" }}>
@@ -684,6 +692,7 @@ const ContactSection = () => {
     </Grid>
     </Grid>
     </Container>
+    </motion.div>
   );
 };
 
